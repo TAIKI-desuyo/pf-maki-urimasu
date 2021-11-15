@@ -1,0 +1,78 @@
+<div class='top-bg px-5 px-sm-0'>
+<div class="container">
+  <div class="row">
+    <p class="col-1"></p>
+    <p class="mt-4 fs-2 bg-light col-2 text-center">薪販売詳細</p>
+  </div>
+
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="makii_image col-4">
+      <%= attachment_image_tag @maki, :image, format: 'jpeg', fallback: "no_image.jpg",size:"300x200" %>
+    </div>
+
+    <div class="col-6 mt-4">
+      <div class="row">
+        <p class="col-3">販売場所</p>
+        <p class="col-3 fs-5"><%=@maki.place %></p>
+      </div>
+      <div class="row">
+        <p class="col-3">量</p>
+        <p class="col-3 fs-5"><%= @maki.amount %></p>
+      </div>
+      <div class="row">
+        <p class="col-3">価格</p>
+        <p class="col-3 fs-5"><%= @maki.cost %>円</p>
+      </div>
+      <div class="row">
+        <p class="col-3">備考<br></p>
+        <p class="col-3 fs-5"><%= @maki.body %></p>
+      </div>
+      <% if @maki.is_active == true %>
+      <div class="row">
+        <p class="col-3">販売ステータス</p>
+        <p class="col-3 fs-5 fw-bold" style="color:green">販売中</p>
+      </div>
+      <% elsif @maki.is_active == false %>
+      <div class="row">
+        <p class="col-3">販売ステータス</p>
+        <p class="col-3 fs-5" style="color:gray">販売停止中</p>
+      </div>
+      <% end %>
+
+      <div class="row">
+        <p class="col-3"><%= link_to "編集する", edit_makii_path(@maki),class:"btn btn-outline-dark"%></p>
+        <p class="col-3"> <%= link_to "削除する", makii_path(@maki),method: :delete,class:"btn btn-outline-dark"%></p>
+        <p class="col-3">
+      <div id="book_mark_buttons_<%= @maki.id %>">
+        <%= render "book_marks/book_mark", maki: @maki %>
+      </div>
+        </p>
+         <p class="col-3">
+      <div id="rate_star_<%= @maki.id %>">
+        <%= render "makiis/rate.form", maki: @maki %>
+        </div>
+        </p>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<div class='top-bg px-5 px-sm-0'>
+<div class="container">
+  <div class="row">
+    <p class="col-1"></p>
+    <p class="mt-4 fs-2 bg-light col-2 text-center">コメント一覧</p>
+  </div>
+  <tr>
+      <td>
+      <div class="comments_index">
+        <div id='comment_area'>
+        <%= render "comments/index", maki: @maki %>
+        </div>
+        <%= render "comments/form",comment: @comment, maki: @maki %>
+      </div>
+      </td>
+      </tr>

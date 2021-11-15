@@ -1,0 +1,10 @@
+<%= form_with(model:[maki, comment], remote: true) do |f| %>
+        <%= f.text_area :comment, rows:'5',cols:'80',placeholder: "コメントをここに" %>
+
+        <p>
+        <%= f.submit "送信" %>
+        </p>
+
+        <% end %>
+        
+       

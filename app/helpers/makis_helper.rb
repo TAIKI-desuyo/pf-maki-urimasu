@@ -1,0 +1,2 @@
+module MakisHelper
+end

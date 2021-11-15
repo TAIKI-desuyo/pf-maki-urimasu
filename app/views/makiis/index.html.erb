@@ -1,0 +1,43 @@
+<div class="container makii-index">
+    <div class="row justify-content-center mt-4">
+      <div class="col-10 row justify-content-between">
+              <p class="mt-4 fs-2 bg-light col-2 text-center">販売場所一覧</p>
+        <div class="fs-2 col-2">
+             <%= link_to "", new_makii_path, class:"far fa-plus-square", :style => "color: black;" %>
+        </div>
+      </div>
+    </div>
+        <div class="row justify-content-center mt-3">
+          <div class="col-10">
+            <table class="table table-hover">
+              <thead class="bg-light">
+                    <tr>
+                      <th>場所</th>
+                      <th>量</th>
+                      <th>価格</th>
+                      <th>ステータス</th>
+                    </tr>
+              </thead>
+                <tbody>
+                      <% @makis.each do |maki| %>
+                         <tr>
+                      <td><%= link_to maki.place,makii_path(maki.id) %></td>
+
+                      <td><%= maki.amount %></td>
+                      <td><%= maki.cost %>円</td>
+                        <% if maki.is_active == true %>
+                      <td style="color:green;">販売中</td>
+                        <% elsif maki.is_active == false %>
+                      <td style="color:gray;">販売停止中</td>
+                        <% end %>
+                        <td><%= render "comments/rate.average", maki: @maki %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="mx-auto" style="width: 200px;">
+      <h4><%= paginate @makis %></h4>
+    </div>
+  </div>

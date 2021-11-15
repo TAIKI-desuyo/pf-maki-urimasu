@@ -1,0 +1,9 @@
+<% maki.comments.each do |comment| %>
+<p>
+<%= comment.user.name  %>
+<%= comment.comment %>
+<% if comment.user == current_user %>
+<%= link_to "Destroy", makii_comment_path(comment.makii, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+<% end %>
+</p>
+<% end %>

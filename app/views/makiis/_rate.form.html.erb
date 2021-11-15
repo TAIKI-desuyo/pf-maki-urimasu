@@ -1,0 +1,14 @@
+<%= form_with(model: maki, remote: true) do |f| %>
+    <div id="rating-form">
+        <label>評価：</label>
+        <%= f.hidden_field :rate, :value => 'score' %>
+        <%= f.submit "評価する" %>
+    </div>
+<% end %>
+<script>
+    $('#rating-form').raty({
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'makii[rate]'
+    });
+</script>
