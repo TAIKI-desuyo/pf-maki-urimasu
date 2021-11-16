@@ -73,4 +73,6 @@ gem 'pry-rails'
 
 group :development, :test do
   gem 'rubocop-airbnb'
+
+  gem "dotenv-rails"
 end

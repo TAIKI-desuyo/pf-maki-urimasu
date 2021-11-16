@@ -18,8 +18,11 @@
           </li> <% if unchecked_notifications.any? %>
           <i class="fa fa-circle" style="color: gold;"></i>
           <% end %>
-          <li><i class="fas fa-brain" style= "color:orange;"></i><%= link_to ' お知らせ　' ,notifications_path, style:"color:orange;",class: "btn-default"  %></li>
-          <li><i class="fas fa-dna" style= "color:orange;"></i><%= link_to ' 問い合わせ　' , style:"color:orange;" %></li>
+          <% if unchecked_notifications.any? %>
+          <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
+          <li><i class="fas fa-brain" style= "color:orange;"></i><%= link_to ' お知らせ　' ,notifications_path,class: "btn-default"  %></li>
+          <li><i class="fas fa-dna" style= "color:orange;"></i><%= link_to ' 問い合わせ　' ,new_contact_path, style:"color:orange;" %></li>
           <li><i class="fas fa-sign-out-alt" style= "color:orange;"></i><%= link_to ' ログアウト　' , destroy_user_session_path, method: :delete, style:"color:orange;" %></li>
         <% else %>
 

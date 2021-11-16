@@ -1,0 +1,32 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class = "col-md-6.mx-auto"> 
+  <div class = "form-inline" >
+    <span>
+      <%= link_to user_path(visitor) %> do
+        <%= image_tag avatar_url(visitor).to_s, class: "icon_mini" %>
+        <strong>
+          <%= visitor.name %>
+      <%= 'さんが' %>
+        </strong>
+      <% case notification.action %>
+      <% when 'comment' then %>
+        <% if notification.makii.user_id == visited.id %>
+          <%= link_to "あなたの投稿", notification.makii, style: "font-weight: bold;" %>
+        <% else %>
+          <span>
+            <%= link_to makii_path(notification.makii) do %>
+              <%= image_tag avatar_url(notification.makii.user).to_s, class: "icon_mini" %>
+              </span>
+              <strong>
+                <%= notification.post.user.name + 'さんの投稿' %>
+        <%= "にコメントしました" %>
+        <p class = "text-muted.mb-0">
+          <%= Comment.find_by(id: notification.comment_id)&.comment %>
+              </strong>
+  <div class = "small.text-muted.text-right">
+    <%= time_ago_in_words(notification.created_at).upcase %>
+  <hr>
+  </div>
+  </div>
+  </div>
