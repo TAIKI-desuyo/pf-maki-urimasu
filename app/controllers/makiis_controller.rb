@@ -50,6 +50,6 @@ class MakiisController < ApplicationController
    private
 
   def maki_params
-    params.require(:makii).permit(:place, :body, :image, :amount, :cost, :is_active, :rate)
+    params.require(:makii).permit(:address, :body, :image, :amount, :cost, :is_active, :rate,:latitude,:latitude)
   end
 end

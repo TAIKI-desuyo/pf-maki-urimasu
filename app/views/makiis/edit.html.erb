@@ -8,8 +8,8 @@
         <table class="table table-borderless">
           <tbody>
             <tr class="mb-3">
-              <td class="text-center"><%= f.label :place, "どこで売りますか？" %></td>
-              <td><%= f.text_field :place, size: 30, placeholder: "場所" %></td>
+              <td class="text-center"><%= f.label :address, "どこで売りますか？" %></td>
+              <td><%= f.text_field :address, size: 30, placeholder: "住所を入力してください" %></td>
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :amount, "量（単位も書いてください）" %></td>
@@ -20,14 +20,6 @@
               <td><%= f.text_field :cost, placeholder: "400" %>円</td>
             </tr>
             <tr class="mb-3">
-              <td class="text-center"><%= f.label :body, "備考" %></td>
-              <td><%= f.text_area :body, placeholder: "備考欄" %></td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center "><%= f.label :image, "商品画像" %></td>
-              <td><%= f.attachment_field :image %></td>
-            </tr>
-            <tr class="mb-3">
               <td class="text-center">販売ステータス</td>
               <td>
                 <%= f.radio_button :is_active, 'true' %>
@@ -35,6 +27,14 @@
                 <%= f.radio_button :is_active, 'false' %>
                 <%= f.label :is_active_not_sale, "販売停止中", value: "false" %>
               </td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :body, "備考" %></td>
+              <td><%= f.text_area :body, placeholder: "備考欄" %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center "><%= f.label :image, "商品画像" %></td>
+              <td><%= f.attachment_field :image %></td>
             </tr>
             <tr>
               <td></td>

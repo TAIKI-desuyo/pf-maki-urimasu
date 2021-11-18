@@ -1,7 +1,7 @@
 class CreateMakiis < ActiveRecord::Migration[5.2]
   def change
     create_table :makiis do |t|
-      t.text :place
+      t.text :address
       t.integer :cost
       t.string :amount
       t.text :body
@@ -9,6 +9,8 @@ class CreateMakiis < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.string :image_id
       t.float :rate, null: false, default: 0
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
   end

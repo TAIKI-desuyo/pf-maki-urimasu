@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_091232) do
   end
 
   create_table "makiis", force: :cascade do |t|
-    t.text "place"
+    t.text "address"
     t.integer "cost"
     t.string "amount"
     t.text "body"
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 2021_11_16_091232) do
     t.integer "user_id"
     t.string "image_id"
     t.float "rate", default: 0.0, null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "makii_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

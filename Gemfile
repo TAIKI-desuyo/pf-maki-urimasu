@@ -68,11 +68,12 @@ gem 'kaminari','~> 1.2.1'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
-
 gem 'pry-rails'
 
 group :development, :test do
-  gem 'rubocop-airbnb'
+gem 'rubocop-airbnb'
 
-  gem "dotenv-rails"
+gem "dotenv-rails"
+gem "geocoder"
+
 end

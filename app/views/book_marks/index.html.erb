@@ -1,4 +1,4 @@
-<div class="container makii-index">
+<div class="container book_mark-index">
     <div class="row justify-content-center mt-4">
       <div class="col-10 row justify-content-between">
               <p class="mt-4 fs-2 bg-light col-2 text-center">お気に入り</p>
@@ -22,7 +22,7 @@
                 <tbody>
                       <% @makis.each do |maki| %>
                          <tr>
-                      <td><%= link_to maki.place,makii_path(maki.id) %></td>
+                      <td><%= link_to maki.address,makii_path(maki.id) %></td>
 
                       <td><%= maki.amount %></td>
                       <td><%= maki.cost %>円</td>

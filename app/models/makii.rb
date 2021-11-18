@@ -5,6 +5,9 @@ class Makii < ApplicationRecord
    has_many :notifications, dependent: :destroy
    has_many :book_marks, dependent: :destroy
    
+   geocoded_by :address
+   after_validation :geocode, if: :address_changed?
+   
   def book_marked_by?(user)
     book_marks.where(user_id: user).exists?
   end

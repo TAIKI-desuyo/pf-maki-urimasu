@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.makii_id = @maki.id
     @comment.save
-    #@comment_makii.create_notification_comment!(current_user, @comment.id)
+    @maki.create_notification_comment!(current_user, @comment.id)
    end
 
 
