@@ -11,10 +11,22 @@
 
   <body>
     <header>
-    
+
     <%= render 'layouts/header' %>
-  
+
     </header>
     <%= yield %>
+     <footer>
+      <div class='container mt-5'>
+  	    <div class='row text-center'>
+    	    <div class='mx-auto'>
+    		    <p class=footer>
+    		      Maki-urimasu<br>
+    		      Presented by Kube.Makio
+    		    </p>
+    	    </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

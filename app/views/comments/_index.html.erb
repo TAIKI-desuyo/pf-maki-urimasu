@@ -1,9 +1,20 @@
 <% maki.comments.each do |comment| %>
+<div class="sample-box-12">
 <p>
-<%= comment.user.name  %>
+<strong>
+<%= comment.user.name %>
+</strong>
+さん
+<br>
 <%= comment.comment %>
+<div align="right">
+ <%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %>
 <% if comment.user == current_user %>
-<%= link_to "Destroy", makii_comment_path(comment.makii, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+<%= link_to makii_comment_path(comment.makii, comment), method: :delete, remote: true do%>
+ <i class="fas fa-trash" style="color: black;"></i>
 <% end %>
+<% end %>
+</div>
 </p>
+</div>
 <% end %>

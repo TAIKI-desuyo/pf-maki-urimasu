@@ -22,6 +22,7 @@ class MakiisController < ApplicationController
   def show
     @maki = Makii.find(params[:id])
     @comment = Comment.new
+
   end
 
   def edit

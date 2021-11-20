@@ -1,7 +1,8 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand p-3" href="/"><%= "LOGO" %></a>
+
+      <a class="navbar-brand p-3" href="/"><%= image_tag 'maki.logo.png', size: '130x100' %></a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,12 +16,7 @@
           <li><i class="fas fa-list" style= "color:orange;"></i><%= link_to ' 販売場所一覧　' ,makiis_path, style:"color:orange;"%></li>
           <li><i class="fas fa-user-secret" style= "color:orange;"></i><%= link_to ' 薪を売りたい　',new_makii_path ,style:"color:orange;" %></li>
 
-          </li> <% if unchecked_notifications.any? %>
-          <i class="fa fa-circle" style="color: gold;"></i>
-          <% end %>
-          <% if unchecked_notifications.any? %>
-          <i class="fa fa-circle" style="color: gold;"></i>
-          <% end %>
+
           <li><i class="fas fa-brain" style= "color:orange;"></i><%= link_to ' お知らせ　' ,notifications_path,class: "btn-default"  %></li>
           <li><i class="fas fa-dna" style= "color:orange;"></i><%= link_to ' 問い合わせ　' ,new_contact_path, style:"color:orange;" %></li>
           <li><i class="fas fa-sign-out-alt" style= "color:orange;"></i><%= link_to ' ログアウト　' , destroy_user_session_path, method: :delete, style:"color:orange;" %></li>
