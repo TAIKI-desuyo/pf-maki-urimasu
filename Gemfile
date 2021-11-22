@@ -76,4 +76,8 @@ gem 'rubocop-airbnb'
 gem "dotenv-rails"
 gem "geocoder"
 
+group :production do
+  gem 'mysql2'
+end
+
 end
