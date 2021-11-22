@@ -17,16 +17,45 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-.header {
-height: 60px;
-  background-image: url("<%= asset_path('no_image.jpg') %>");
-  background-size: cover;
-  background-position: center;
+header {
+  background-image:image-url('campfire-1846142.jpg');
+  background-position:center;
+  background-size:cover;
+
 
 }
+body{
+  //height:100vh;
+  background: linear-gradient(45deg, #003333, #669966);
+  color:white;
+}
+main{
+//  display: flex;
+  position:relative;
+  padding-bottom: 120px;
+  min-height: 60vh;
+}
+footer{
+  font-family: 'vintage';
+  margin: 0;
+  height: 120px;
+  //position:absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-  body{
-        /* 背景をグラデーションにする */
-    background: linear-gradient(45deg, #003333, #669966);
-    color:white;
-    }
+
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+}
+
+@font-face {
+ font-family: "vintage";
+ src: url('../fonts/OldPrintingPressFreeVersion-8jd0.ttf') format('opentype');
+}

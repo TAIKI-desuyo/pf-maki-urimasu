@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2021_11_16_091232) do
-
   create_table "book_marks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "makii_id", null: false
@@ -67,8 +66,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_091232) do
     t.integer "visited_id"
     t.integer "makii_id"
     t.integer "comment_id"
-    t.string "action"
-    t.boolean "checked"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,5 +84,4 @@ ActiveRecord::Schema.define(version: 2021_11_16_091232) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 end

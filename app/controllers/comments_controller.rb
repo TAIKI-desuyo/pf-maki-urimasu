@@ -1,20 +1,17 @@
 class CommentsController < ApplicationController
-   def create
+  def create
     @maki = Makii.find(params[:makii_id])
     @comment = current_user.comments.new(comment_params)
     @comment.makii_id = @maki.id
     @comment.save
     @maki.create_notification_comment!(current_user, @comment.id)
-   end
+  end
 
-
-   def destroy
-     @maki = Makii.find(params[:makii_id])
-     Comment.find_by(id: params[:id], makii_id: params[:makii_id]).destroy
-    #BookComment.find_by(id: params[:id]).destroy
-   end
-
-
+  def destroy
+    @maki = Makii.find(params[:makii_id])
+    Comment.find_by(id: params[:id], makii_id: params[:makii_id]).destroy
+    # BookComment.find_by(id: params[:id]).destroy
+  end
 
   private
 

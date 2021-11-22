@@ -1,4 +1,4 @@
-<header>
+
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
 
@@ -17,7 +17,8 @@
           <li><i class="fas fa-user-secret" style= "color:orange;"></i><%= link_to ' 薪を売りたい　',new_makii_path ,style:"color:orange;" %></li>
 
 
-          <li><i class="fas fa-brain" style= "color:orange;"></i><%= link_to ' お知らせ　' ,notifications_path,class: "btn-default"  %></li>
+          <li><i class="fas fa-brain" style= "color:orange;"></i><%=render "partial/circle" %></li>
+
           <li><i class="fas fa-dna" style= "color:orange;"></i><%= link_to ' 問い合わせ　' ,new_contact_path, style:"color:orange;" %></li>
           <li><i class="fas fa-sign-out-alt" style= "color:orange;"></i><%= link_to ' ログアウト　' , destroy_user_session_path, method: :delete, style:"color:orange;" %></li>
         <% else %>
@@ -32,4 +33,3 @@
       </div>
     </div>
   </nav>
-</header>
