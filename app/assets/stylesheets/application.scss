@@ -17,17 +17,30 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+@font-face {
+ font-family: "takibi",;
+ src: url(asset_path('04Takibi-Medium.otf'));
+}
+
+@font-face {
+ font-family: "vintage",;
+ src: url(asset_path('OldPrintingPressFreeVersion-8jd0.ttf'));
+}
+
 header {
-  background-image:image-url('campfire-1846142.jpg');
+   font-family: "takibi",;
+ src: url(asset_path('04Takibi-Medium.otf'));
+  background-image:image-url('shutterstock_1975741912.jpg');
   background-position:center;
   background-size:cover;
-
+  height: 100px;
 
 }
 body{
   //height:100vh;
-  background: linear-gradient(45deg, #003333, #669966);
-  color:white;
+  background-image:image-url('shutterstock_113944255.jpg');
+  background-position:center;
+  //background-size:cover;
 }
 main{
 //  display: flex;
@@ -35,16 +48,30 @@ main{
   padding-bottom: 120px;
   min-height: 60vh;
 }
+
 footer{
+  background-image:image-url('shutterstock_1975741913.jpg');
+  background-position:bottom;
+  background-size:cover;
+   height: 80px;
+  }
+
+.footer_text{
   font-family: 'vintage';
+  src: url(asset_path('OldPrintingPressFreeVersion-8jd0.ttf'));
   margin: 0;
-  height: 120px;
   //position:absolute;
   left: 0;
   bottom: 0;
   display: flex;
   justify-content: center;
   width: 100%;
+   text-align: center;
+   background: rgb(255,255,255);
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(156,73,5,1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
 }
 
 
@@ -55,7 +82,17 @@ footer{
   color: #efa04c;
 }
 
-@font-face {
- font-family: "vintage";
- src: url('../fonts/OldPrintingPressFreeVersion-8jd0.ttf') format('opentype');
+
+.midashi{
+ font-family: "takibi",;
+ src: url(asset_path('04Takibi-Medium.otf'));
+   text-align: center;
+ background: rgb(3,0,0);
+background: radial-gradient(circle, rgba(3,0,0,1) 0%, rgba(156,73,5,1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+  padding: 1rem 2rem;
+  border-top: 6px double #000;
+  border-bottom: 6px double #000;
+  margin-top: 10px;
 }

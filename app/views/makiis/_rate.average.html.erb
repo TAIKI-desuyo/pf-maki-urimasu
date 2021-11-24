@@ -1,13 +1,11 @@
-<div class="average-review-rating" data-score=<%= makii.average_rate %>></div>
+<div class="average-review-rating" data-score=<%= maki.average_rate %>></div>
 
 <script>
+  $('.average-review-rating').empty();
   $('.average-review-rating').raty({
     readOnly: true,
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",
-    score: function() {
-      return $(this).attr('data-score')
-    }
+    starHalf: "<%= asset_path('star-half.png') %>"
   });
 </script>

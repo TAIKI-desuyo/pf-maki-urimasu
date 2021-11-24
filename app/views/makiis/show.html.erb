@@ -1,8 +1,8 @@
 <div class='top-bg px-5 px-sm-0'>
 <div class="container">
+  <p class="midashi text-center">薪販売詳細</p>
   <div class="row">
     <p class="col-1"></p>
-    <p class="mt-4 fs-2 bg-light col-2 text-center">薪販売詳細</p>
   </div>
 
   <div class="row">
@@ -51,7 +51,7 @@
             <%= attachment_image_tag @maki, :image, format: 'jpeg', fallback: "no_image.jpg",size:"300x200" %>
             </div>
     </div>
-    <div class="col-6 mt-4">
+    <div class="col-6 mt-4 pl-5">
       <div class="row">
         <p class="col-3">ユーザー名</p>
         <p class="col-3 fs-5"><%=@maki.user.name %></p>
@@ -94,7 +94,7 @@
 
          <p class="col-3 mt-5">
         <div id="rate_star_<%= @maki.id %>">
-        <%= render "makiis/rate.form", maki: @maki %>
+        <%= render "makiis/rate.form", review: @review %>
         </div>
         </p>
          <% if @maki.user.id == current_user.id %>
@@ -126,4 +126,3 @@
       </div>
       </td>
       </tr>
-  

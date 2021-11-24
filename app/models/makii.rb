@@ -4,6 +4,7 @@ class Makii < ApplicationRecord
   has_many :comments
   has_many :notifications, dependent: :destroy
   has_many :book_marks, dependent: :destroy
+  has_many :reviews, foreign_key: "makii_id"
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -36,4 +37,18 @@ class Makii < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
+  def average_rate
+    if self.reviews.count > 0
+      reviews = self.reviews
+      sum = 0
+      reviews.each do |review|
+        sum = sum + review.rate
+      end
+      sum / reviews.count
+    else
+      0
+    end
+  end
+
 end
