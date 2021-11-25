@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_115305) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "makii_id"
     t.float "rate", default: 0.0, null: false
     t.datetime "created_at", null: false

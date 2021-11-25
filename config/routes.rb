@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   post "makiis/rate" => "makiis#rate"
   resources :makiis do
-    resources :reviews, only: [:create, :destroy]
+    resources :reviews, only: [:create, :destroy, :update]
     resources :comments, only: [:create, :destroy]
     resource :book_marks, only: [:create, :destroy]
   end

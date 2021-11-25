@@ -1,13 +1,12 @@
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 <div class='top-bg px-5 px-sm-0'>
 <div class="container">
+    <p class="midashi text-center">お知らせ</p>
   <div class="row">
     <p class="col-5"></p>
-    <p class="midashi text-center">お知らせ</p>
   </div>
   <div class="row">
-    <div class="col-7">
-
+    <div class="col-12 mr-auto">
     <%= link_to notifications_destroy_all_path, method: :delete do %>
         <i class="fas fa-trash" style="color: black;"></i>
         <h5 style="color: black;"></h5>
@@ -20,6 +19,10 @@
         <%= render "notifications", notifications: @notifications %>
     </div>
 <% else %>
-    <p>通知はありません</p>
+
+
+      <div class="row justify-content-center mt-3">
+      <h5>通知はありません</h5>
+
 <% end %>
  <h4><%= paginate @notifications %></h4>

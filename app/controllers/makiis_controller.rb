@@ -22,7 +22,8 @@ class MakiisController < ApplicationController
   def show
     @maki = Makii.find(params[:id])
     @comment = Comment.new
-    @review = Review.new
+    # もしレビュー数が0だったら
+    @review = Review.new(makii_id:@maki.id)
   end
 
   def edit

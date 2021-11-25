@@ -93,8 +93,8 @@
 
 
          <p class="col-3 mt-5">
-        <div id="rate_star_<%= @maki.id %>">
-        <%= render "makiis/rate.form", review: @review %>
+        <div id="rate_star_">
+          <%= render "reviews/rate.form", review: @review, maki: @maki %>
         </div>
         </p>
          <% if @maki.user.id == current_user.id %>

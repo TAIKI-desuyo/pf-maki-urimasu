@@ -1,0 +1,16 @@
+
+<%= form_with(model:[maki,review], remote: true,url:makii_reviews_path(makii_id:maki.id)) do |f| %>
+    <div id="rating-form" class= "d-inline-block">
+        <%= f.hidden_field :rate, :value => 'score' %>
+        <%= f.submit "評価する" %>
+    </div>
+    <div class="d-inline-block"><%= flash[:success] %></div>
+<% end %>
+<script>
+    $('#rating-form').raty({
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'review[rate]',
+        score: "<%= review.rate %>"
+    });
+</script>
