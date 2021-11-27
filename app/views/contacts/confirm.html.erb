@@ -5,28 +5,31 @@
     <p class="col-1"></p>
   </div>
 
-<table>
-  <tbody>
+<%= form_for @contact, :url => contacts_path do |f| %>
+  <table class="table">
     <tr>
-      <td class="text-center" style="width: 30%;">お名前</td>
-      <td><%= @contact.name %></td>
+      <th class="font">名前</th>
+      <td>
+        <%= f.hidden_field :name %>
+        <%= @contact.name %>
+      </td>
     </tr>
     <tr>
-      <td class="text-center">メッセージ</td>
-      <td style="white-space: pre-wrap;"><%= @contact.message %></td>
+      <th class="font">メールアドレス</th>
+      <td>
+        <%= f.hidden_field :email %>
+        <%= @contact.email %>
+      </td>
     </tr>
-  </tbody>
-</table>
-
-<%= form_for(@contact) do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :email %>
-  <%= f.hidden_field :message %>
-  <div><%= f.submit '送信' %></div>
-<% end %>
-<%= form_for @contact, url: back_path do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :email %>
-  <%= f.hidden_field :message %>
-  <div><%= f.submit '入力画面に戻る' %></div>
+    <tr>
+      <th class="font">お問い合わせ内容</th>
+      <td>
+        <%= f.hidden_field :message %>
+        <%= simple_format(@contact.message) %>
+      </td>
+    </tr>
+  </table>
+  <div class="row justify-content-center mt-5 mb-5 ml-5">
+  <%= f.submit '送信', :class => ' w-25 btn-animation-border btn-sm btn-block' %>
+  </div>
 <% end %>

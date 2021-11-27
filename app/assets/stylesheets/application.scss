@@ -74,14 +74,26 @@ footer{
 
 }
 
-
-.n-circle {
-  position: absolute;
-  padding-left: 1rem;
-  padding-top: 0rem;
-  color: #efa04c;
+.user-name{
+  margin-right:80px;
+  -webkit-text-fill-color:#FFFFEE;
+}
+.fa-stack{
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
+.fa-bell {
+  font-size: larger;
+  position: absolute;
+  margin-top: 3px;
+  -webkit-text-fill-color:#00F9A9;
+}
+.fa-circle{
+  font-size: xx-small;
+  position: fixed;
+  -webkit-text-fill-color:#FFFF00;
+}
 
 .midashi{
  font-family: "takibi",;
@@ -95,4 +107,101 @@ background: radial-gradient(circle, rgba(3,0,0,1) 0%, rgba(156,73,5,1) 100%);
   border-top: 6px double #000;
   border-bottom: 6px double #000;
   margin-top: 10px;
+}
+
+
+thead{
+   font-family: "takibi",;
+ src: url(asset_path('04Takibi-Medium.otf'));
+}
+
+.font{
+   font-family: "takibi",;
+ src: url(asset_path('04Takibi-Medium.otf'));
+}
+
+.btn-animation-border::before,
+.btn-animation-border::after {
+  position:absolute;
+  width: 0;
+  height: 2.5px;
+  content:"";
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  background-color: #222;
+}
+.btn-animation-border::before {
+  top:0;
+  left:0;
+}
+.btn-animation-border::after {
+  right:0;
+  bottom:0;
+}
+.btn-animation-border:hover::before,
+.btn-animation-border:hover::after {
+  width:100%;
+}
+.btn-animation-border:hover{
+  color:#000;
+  background-color: #fff;
+}
+
+
+.h-font{
+     text-align: center;
+background: rgb(128,45,0);
+background: linear-gradient(0deg, rgba(128,45,0,1) 0%, rgba(194,189,186,0.9920343137254902) 65%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+}
+
+
+
+
+
+
+.btn-animation-border{
+   font-family: 'vintage';
+  src: url(asset_path('OldPrintingPressFreeVersion-8jd0.ttf'));
+  text-align: center;
+background: rgb(3,0,0);
+background: radial-gradient(circle, rgba(3,0,0,1) 0%, rgba(156,73,5,1) 49%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+  position: relative;
+  color:#fff;
+  background-color: #222;
+  padding: 10px 8px 10px 8px;
+  text-align: center;
+}
+.btn-animation-border::before,
+.btn-animation-border::after {
+  position:absolute;
+  width: 0;
+  height: 2.5px;
+  content:"";
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  background-color: #222;
+}
+.btn-animation-border::before {
+  top:0;
+  left:0;
+}
+.btn-animation-border::after {
+  right:0;
+  bottom:0;
+}
+.btn-animation-border:hover::before,
+.btn-animation-border:hover::after {
+  width:100%;
+}
+.btn-animation-border:hover{
+  color:#000;
+  background-color: #fff;
+}
+
+.yoyo{
+  height: 35px;
 }

@@ -1,0 +1,12 @@
+    <%= form_for(@comment, url: makiis_path) do |f| %>
+  <% if @comment.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <strong>入力内容にエラーがあります</strong>
+      <ul>
+        <% @comment.errors.each do |attr, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

@@ -23,7 +23,7 @@ class MakiisController < ApplicationController
     @maki = Makii.find(params[:id])
     @comment = Comment.new
     # もしレビュー数が0だったら
-    @review = Review.new(makii_id:@maki.id)
+    @review = Review.where(user_id:current_user.id,makii_id: @maki.id).first || Review.new(user_id:current_user.id,makii_id: @maki.id)
   end
 
   def edit

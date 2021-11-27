@@ -3,9 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.sample-box-12 {
-    border: 4px solid #82636b;
-    border-radius: 240px 15px 185px 15px / 15px 200px 15px 185px;
-    margin: 2em 0;
-    padding: 2em;
+.kakomi-tape2 {
+ position: relative;
+ width: 100%;
+ margin: 2.5em auto;
+ padding: 35px 30px 20px;
+ color: #770000;/* 文字色 */
+ background-color: #e8ddbd; /*枠背景色*/
+ box-shadow: inset 0 0 40px rgba(204, 186, 136,1), 0 2px 2px #ccc;
+}
+.kakomi-tape2::before {
+ display: block;
+ position: absolute;
+ content: "";
+ width: 140px;
+ height: 35px;
+ left: 35%;
+ top: -16px;
+ background-color: rgba(204, 186, 136,0.3);/*テープ色*/
+ box-shadow: 0 0 3px rgba(0,0,0,0.1);
+ transform: rotate( -3deg ); /*テープ角度*/
 }

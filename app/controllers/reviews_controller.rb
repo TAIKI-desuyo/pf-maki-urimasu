@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     @review.rate = params[:review][:rate]
     @review.save
     @maki = @review.makii
-    flash[:success] = "評価しました！"
+#    flash[:success] = "評価しました！"
     # redirect_to makii_path(@review.makii_id)
   end
 

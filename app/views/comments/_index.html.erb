@@ -1,11 +1,11 @@
 <% maki.comments.each do |comment| %>
-<div class="sample-box-12">
+<div class="kakomi-tape2">
 <p>
 <strong>
 <%= comment.user.name %>
 </strong>
 さん
-<br>
+<hr>
 <%= comment.comment %>
 <div align="right">
  <%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %>

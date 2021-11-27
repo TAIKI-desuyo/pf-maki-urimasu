@@ -6,6 +6,11 @@ class Makii < ApplicationRecord
   has_many :book_marks, dependent: :destroy
   has_many :reviews, foreign_key: "makii_id"
 
+  validates :address, :presence => {:message => '住所を入力してください'}
+  validates :amount, :presence => {:message => '量を入力してください'}
+  validates :cost, :presence => {:message => '価格を入力してください'}
+  validates :is_active, :presence => {:message => '販売ステータスを選んでください'}
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

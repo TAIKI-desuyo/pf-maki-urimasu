@@ -1,5 +1,5 @@
        <% if maki.book_marked_by?(current_user) %>
-        <p class="col-5"><%= link_to "お気に入りを外す", makii_book_marks_path(maki), method: :delete ,remote: true, class:"btn btn-outline-dark" %></p>
+        <p class="col-5"><%= link_to "お気に入りを外す", makii_book_marks_path(maki), method: :delete ,remote: true, class:"btn-animation-border btn-sm btn-block" %></p>
          <% else %>
-        <p class="col-5"><%= link_to "お気に入り登録", makii_book_marks_path(maki), method: :post ,remote: true, class:"btn btn-outline-dark" %></td>
+        <p class="col-5"><%= link_to "お気に入り登録", makii_book_marks_path(maki), method: :post ,remote: true, class:"btn-animation-border btn-sm btn-block" %></td>
     <% end %>

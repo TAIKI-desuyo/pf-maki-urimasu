@@ -1,8 +1,8 @@
 
-<%= form_with(model:[maki,review], remote: true,url:makii_reviews_path(makii_id:maki.id)) do |f| %>
+<%= form_with(model:[maki,review], remote: true,url:makii_reviews_path(makii_id:maki.id), method: :post) do |f| %>
     <div id="rating-form" class= "d-inline-block">
         <%= f.hidden_field :rate, :value => 'score' %>
-        <%= f.submit "評価する" %>
+        <%= f.submit "評価する",class:"btn-animation-border" %>
     </div>
     <div class="d-inline-block"><%= flash[:success] %></div>
 <% end %>

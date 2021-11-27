@@ -1,8 +1,14 @@
+
+
 <%= link_to (notifications_path),style:"color:orange;" do %>
-  お知らせ
-  <% if unchecked_notifications.any? %>
-    <span class="fa-stack">
-      <i class = "far fa-bell fa-lg  style="font-size: 1.5em;"></i>
-    </span>
-  <% end %>
+
+
+  <span class="fa-stack ">
+    <i class="fas far fa-bell"></i>
+    <% if unchecked_notifications.any? %>
+    <i class="fas fa-circle " style="color:Tomato"></i>
+    <% end %>
+  </span>
 <% end %>
+
+

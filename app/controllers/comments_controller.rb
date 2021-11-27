@@ -3,8 +3,10 @@ class CommentsController < ApplicationController
     @maki = Makii.find(params[:makii_id])
     @comment = current_user.comments.new(comment_params)
     @comment.makii_id = @maki.id
-    @comment.save
-    @maki.create_notification_comment!(current_user, @comment.id)
+    unless @comment.save
+      render 'error'
+      @maki.create_notification_comment!(current_user, @comment.id)
+    end
   end
 
   def destroy
