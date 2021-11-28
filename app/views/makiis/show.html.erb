@@ -125,13 +125,10 @@
       <td>
       <div class="comments_index">
         <div id='comment_area'>
-        <%= render "comments/index", maki: @maki, comments: @comments %>
+        <%= render "comments/index", maki: @maki %>
         </div>
         <%= render "comments/form",comment: @comment, maki: @maki %>
       </div>
       </td>
       </tr>
 
-          <div class="mx-auto" style="width: 200px;">
-      <h7><%= paginate @comments %></h7>
-    </div>
