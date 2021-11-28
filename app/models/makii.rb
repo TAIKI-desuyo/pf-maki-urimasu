@@ -9,7 +9,7 @@ class Makii < ApplicationRecord
   validates :address, :presence => {:message => '住所を入力してください'}
   validates :amount, :presence => {:message => '量を入力してください'}
   validates :cost, :presence => {:message => '価格を入力してください'}
-  validates :is_active, :presence => {:message => '販売ステータスを選んでください'}
+  validates :is_active, inclusion: {in: [true, false]}
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

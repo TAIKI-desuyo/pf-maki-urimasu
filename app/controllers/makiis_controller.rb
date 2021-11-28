@@ -22,8 +22,8 @@ class MakiisController < ApplicationController
   def show
     @maki = Makii.find(params[:id])
     @comment = Comment.new
-    # もしレビュー数が0だったら
     @review = Review.where(user_id:current_user.id,makii_id: @maki.id).first || Review.new(user_id:current_user.id,makii_id: @maki.id)
+    @comments = Comment.page(params[:page]).per(10)
   end
 
   def edit
@@ -32,6 +32,7 @@ class MakiisController < ApplicationController
 
   def update
     @maki = Makii.find(params[:id])
+
     @maki.update(maki_params)
     redirect_to makii_path(@maki.id)
   end
