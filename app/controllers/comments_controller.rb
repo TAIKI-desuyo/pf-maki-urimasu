@@ -5,8 +5,8 @@ class CommentsController < ApplicationController
     @comment.makii_id = @maki.id
     unless @comment.save
       render 'error'
-      @maki.create_notification_comment!(current_user, @comment.id)
     end
+      @maki.create_notification_comment!(current_user, @comment.id)
   end
 
   def destroy
