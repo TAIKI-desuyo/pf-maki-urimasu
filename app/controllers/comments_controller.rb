@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   def create
     @maki = Makii.find(params[:makii_id])
     @comment = current_user.comments.new(comment_params)
+    @comment.score = Language.get_data(comment_params[:comment])
     @comment.makii_id = @maki.id
     unless @comment.save
       render 'error'

@@ -1,20 +1,29 @@
- <% maki.comments.each do |comment| %>
+<% maki.comments.each do |comment| %>
   <div class="kakomi-tape2">
-    <p>
-    <strong>
-    <%= comment.user.name %>
-    </strong>
-    さん
-    <hr>
-    <%= comment.comment %>
-  <div align="right">
-    <%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %>
-    <% if comment.user == current_user %>
-    <%= link_to makii_comment_path(comment.makii, comment), method: :delete, remote: true do%>
-     <i class="fas fa-trash" style="color: black;"></i>
-    <% end %>
-    <% end %>
+       <p>
+        <strong>
+         <%= comment.user.name %>
+        </strong>
+         さん
+       </p>
+       <hr>
+   <div>
+       <% if comment.score <= -0.25 %>
+       <font color="red"><%= comment.comment %></font>
+       <% elsif comment.score <= 0.25 %>
+       <font color="orange"><%= comment.comment %></font>
+       <% elsif comment.score <= 1.0 %>
+       <font color="green"><%= comment.comment %></font>
+       <% end %>
+   </div>
+   <div align="right">
+       <%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %>
+       <% if comment.user == current_user %>
+       <%= link_to makii_comment_path(comment.makii, comment), method: :delete, remote: true do%>
+        <i class="fas fa-trash" style="color: black;"></i>
+       <% end %>
+       <% end %>
+   </div>
+      </p>
   </div>
-   </p>
-  </div>
-  <% end %>
+<% end %>
