@@ -1,29 +1,62 @@
 <% maki.comments.each do |comment| %>
+
   <div class="kakomi-tape2">
-       <p>
-        <strong>
-         <%= comment.user.name %>
-        </strong>
-         さん
-       </p>
-       <hr>
+   <p>
+    <strong>
+     <%= comment.user.name %>
+    </strong>
+     さん
+   </p>
+   <hr>
    <div>
-       <% if comment.score <= -0.25 %>
-       <font color="red"><%= comment.comment %></font>
-       <% elsif comment.score <= 0.25 %>
-       <font color="orange"><%= comment.comment %></font>
-       <% elsif comment.score <= 1.0 %>
-       <font color="green"><%= comment.comment %></font>
-       <% end %>
+    <% if comment.score <= -0.25 %>
+    <font color="red"><%= comment.comment %></font>
+    <% elsif comment.score <= 0.25 %>
+    <font color="orange"><%= comment.comment %></font>
+    <% elsif comment.score <= 1.0 %>
+    <font color="green"><%= comment.comment %></font>
+    <% end %>
    </div>
    <div align="right">
-       <%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %>
-       <% if comment.user == current_user %>
-       <%= link_to makii_comment_path(comment.makii, comment), method: :delete, remote: true do%>
-        <i class="fas fa-trash" style="color: black;"></i>
-       <% end %>
-       <% end %>
+    <%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %>
+    <% if comment.user == current_user %>
+     <%= link_to makii_comment_path(comment.makii, comment), method: :delete, remote: true do %>
+      <i class="fas fa-trash" style="color: black;"></i>
+     <% end %>
+    <% end %>
    </div>
-      </p>
+   <%= form_with(model: [maki, new_reply_comment], remote: true) do |f| %>
+    <ul class="collapsible">
+      <li>
+       <div class="collapsible-header"></div>
+       <div class="collapsible-body">
+        <%= f.text_field :comment, class: "rounded-pill form-control"%>
+        <%= f.hidden_field :reply_comment, :value => comment.id  %>
+        <%= button_tag type:"submit", class: "waves-effect waves-light btn" do %>
+          <%= f.submit "返信する" %>
+        <% end %>
+       </div>
+      </li>
+    </ul>
+   <% end %>
+
+ <% comment.replies.each do |reply| %>
+     <strong>
+     <%= comment.user.name %>
+    </strong>
+     さん
+     <hr>
+ <%= reply.comment %>
+    <div align="right">
+    <%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %>
+    <% if comment.user == current_user %>
+     <%= link_to makii_comment_path(comment.makii, comment), method: :delete, remote: true do %>
+      <i class="fas fa-trash" style="color: black;"></i>
+     <% end %>
+    <% end %>
+   </div>
+ <% end %>
+
+
   </div>
 <% end %>

@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.text :comment
       t.integer :makii_id
       t.integer :user_id
+      t.integer :reply_comment
       t.timestamps
     end
   end

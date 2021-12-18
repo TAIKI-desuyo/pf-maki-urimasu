@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def create
+    @new_reply_comment = Comment.new()
     @maki = Makii.find(params[:makii_id])
     @comment = current_user.comments.new(comment_params)
     @comment.score = Language.get_data(comment_params[:comment])
@@ -19,6 +20,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment,:reply_comment)
   end
 end
