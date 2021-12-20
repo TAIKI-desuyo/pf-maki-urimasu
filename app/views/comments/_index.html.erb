@@ -1,13 +1,14 @@
-<% maki.comments.each do |comment| %>
+<% maki.comments.where(reply_comment: nil).each do |comment| %>
+
 
   <div class="kakomi-tape2">
    <p>
-    <strong>
+    <strong class="box16">
      <%= comment.user.name %>
     </strong>
      さん
    </p>
-   <hr>
+
    <div>
     <% if comment.score <= -0.25 %>
     <font color="red"><%= comment.comment %></font>
@@ -25,37 +26,42 @@
      <% end %>
     <% end %>
    </div>
-   <%= form_with(model: [maki, new_reply_comment], remote: true) do |f| %>
+
+
+ <% comment.replies.each do |reply| %>
+     <strong>
+     <%= reply.user.name %>
+    </strong>
+     さん
+
+    <div>
+     <% if reply.score <= -0.25 %>
+      <font color="red"><%= reply.comment %></font>
+     <% elsif reply.score <= 0.25 %>
+      <font color="orange"><%= reply.comment %></font>
+     <% elsif reply.score <= 1.0 %>
+      <font color="green"><%= reply.comment %></font>
+     <% end %>
+   </div>
+    <div align="right">
+    <%= reply.created_at.strftime('%Y/%m/%d/%H:%M') %>
+   </div>
+    <hr>
+ <% end %>
+
+
+ <%= form_with(model: [maki, new_reply_comment], remote: true) do |f| %>
     <ul class="collapsible">
       <li>
        <div class="collapsible-header"></div>
        <div class="collapsible-body">
-        <%= f.text_field :comment, class: "rounded-pill form-control"%>
+        <%= f.text_field :comment, class: "rounded-pill form-control w-75"%>
         <%= f.hidden_field :reply_comment, :value => comment.id  %>
-        <%= button_tag type:"submit", class: "waves-effect waves-light btn" do %>
-          <%= f.submit "返信する" %>
-        <% end %>
+   <%= f.submit "返信",class: "btn-animation-border btn-sm col-1 ml-3"  %>
        </div>
       </li>
     </ul>
    <% end %>
-
- <% comment.replies.each do |reply| %>
-     <strong>
-     <%= comment.user.name %>
-    </strong>
-     さん
-     <hr>
- <%= reply.comment %>
-    <div align="right">
-    <%= comment.created_at.strftime('%Y/%m/%d/%H:%M') %>
-    <% if comment.user == current_user %>
-     <%= link_to makii_comment_path(comment.makii, comment), method: :delete, remote: true do %>
-      <i class="fas fa-trash" style="color: black;"></i>
-     <% end %>
-    <% end %>
-   </div>
- <% end %>
 
 
   </div>

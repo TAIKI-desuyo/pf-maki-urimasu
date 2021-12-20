@@ -1,8 +1,8 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :makii
+  #Railsが認識できるようにクラスネームをつけてコメント自身に紐付けしてアソシエーション を組んでいる
   has_many :replies, class_name: 'Comment', foreign_key: :reply_comment, dependent: :destroy
-
   validates :comment, :presence => {:message => 'コメントを入力してください'}
   # validates :rate, numericality: {
   # less_than_or_equal_to: 5,

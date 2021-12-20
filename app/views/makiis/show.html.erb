@@ -9,7 +9,6 @@
     <div class="col-1"></div>
     <div class="makii_image,map col-4">
 
-
 <script type="text/javascript">
         function initMap() {
           var test ={lat: <%= @maki.latitude %>, lng: <%= @maki.longitude %>};
@@ -121,14 +120,14 @@
     <p class="col-1"></p>
   </div>
   <Hr>
+
   <tr>
-      <td>
+    <td>
       <div class="comments_index">
         <div id='comment_area'>
-        <%= render "comments/index",new_reply_comment: @comment, maki: @maki %>
+         <%= render "comments/index",new_reply_comment: @comment, maki: @maki %>
         </div>
-        <%= render "comments/form",comment: @comment, maki: @maki %>
+         <%= render "comments/form",comment: @comment, maki: @maki %>
       </div>
-      </td>
-      </tr>
-      
+    </td>
+  </tr>

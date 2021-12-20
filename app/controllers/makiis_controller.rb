@@ -23,7 +23,6 @@ class MakiisController < ApplicationController
     @maki = Makii.find(params[:id])
     @comment = Comment.new
     @review = Review.where(user_id:current_user.id,makii_id: @maki.id).first || Review.new(user_id:current_user.id,makii_id: @maki.id)
-    @comments = Comment.page(params[:page]).per(10)
   end
 
   def edit

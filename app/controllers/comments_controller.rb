@@ -9,12 +9,14 @@ class CommentsController < ApplicationController
       render 'error'
     end
       @maki.create_notification_comment!(current_user, @comment.id)
+
   end
 
   def destroy
     @maki = Makii.find(params[:makii_id])
+    
     Comment.find_by(id: params[:id], makii_id: params[:makii_id]).destroy
-    # BookComment.find_by(id: params[:id]).destroy
+
   end
 
   private
