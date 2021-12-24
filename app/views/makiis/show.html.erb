@@ -1,133 +1,120 @@
-<div class='top-bg px-5 px-sm-0'>
-<div class="container">
-  <p class="midashi text-center">薪販売詳細</p>
-  <div class="row">
-    <p class="col-1"></p>
-  </div>
+   <div class="container">
+      <p class="midashi text-center">薪販売詳細</p>
+    <div class="row">
+      <p class="col-1"></p>
+    </div>
+    <div class="row">
+      <div class="col-1"></div>
+        <div class="makii_image,map col-4">
+          <script type="text/javascript">
+            function initMap() {
+              var test ={lat: <%= @maki.latitude %>, lng: <%= @maki.longitude %>};
+              var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: test
+                  });
+              var transitLayer = new google.maps.TransitLayer();
+              transitLayer.setMap(map);
 
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="makii_image,map col-4">
-
-<script type="text/javascript">
-        function initMap() {
-          var test ={lat: <%= @maki.latitude %>, lng: <%= @maki.longitude %>};
-          var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 15,
-              center: test
+              var contentString = '<%= @maki.address %>';
+              var infowindow = new google.maps.InfoWindow({
+                content: contentString
               });
-          var transitLayer = new google.maps.TransitLayer();
-          transitLayer.setMap(map);
 
-          var contentString = '<%= @maki.address %>';
-          var infowindow = new google.maps.InfoWindow({
-            content: contentString
-          });
+              var marker = new google.maps.Marker({
+                            position:test,
+                            map: map,
+                            title: contentString
+                           });
 
-          var marker = new google.maps.Marker({
-                        position:test,
-                        map: map,
-                        title: contentString
-                       });
-
-           marker.addListener('click', function() {
-             infowindow.open(map, marker);
-           });
-        }
+               marker.addListener('click', function() {
+                 infowindow.open(map, marker);
+               });
+            }
           </script>
-
           <script async defer
              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
           </script>
-
-          <style type="text/css">
-            #map { height: 300px;
-                   width: 100%;}
-          </style>
+            <style type="text/css">
+              #map { height: 300px;
+                     width: 100%;}
+            </style>
           <div id="map"></div>
-
-            <div class= "mt-4">
+          <div class= "mt-4">
             <%= attachment_image_tag @maki, :image, format: 'jpeg', fallback: "no_image.jpg",size:"300x200" %>
+          </div>
+         </div>
+         <div class="col-6 mt-4 pl-5 ml-5">
+           <div class="row">
+            <p class="col-4 font">ユーザー名</p>
+            <p class="col-4 fs-5"><%=@maki.user.name %></p>
+           </div>
+           <div class="row">
+            <p class="col-4 font">販売場所</p>
+            <p class="col-8 fs-5"><%=@maki.address %></p>
+           </div>
+           <div class="row">
+            <p class="col-4 font">量</p>
+            <p class="col-4 fs-5"><%= @maki.amount %></p>
+           </div>
+           <div class="row">
+            <p class="col-4 font">価格</p>
+            <p class="col-4 fs-5"><%= @maki.cost %>円</p>
+           </div>
+            <% if @maki.is_active == true %>
+           <div class="row">
+            <p class="col-4 font">販売ステータス</p>
+            <p class="col-4 fs-5 fw-bold" style="color:green">販売中</p>
+           </div>
+             <% elsif @maki.is_active == false %>
+           <div class="row">
+            <p class="col-4 font">販売ステータス</p>
+            <p class="col-4 fs-5" style="color:gray">販売停止中</p>
+           </div>
+             <% end %>
+           <div class="row">
+            <p class="col-4 font">備考<br></p>
+            <p class="col-9 fs-5"><%= @maki.body %></p>
+           </div>
+            <p class="col-3">
+           <div id="book_mark_buttons_<%= @maki.id %>">
+            <%= render "book_marks/book_mark", maki: @maki %>
+           </div>
+            </p>
+            <p class="col-3 mt-5">
+           <div id="rate_star_">
+            <%= render "reviews/rate.form", review: @review, maki: @maki %>
+           </div>
+            </p>
+            <% if @maki.user.id == current_user.id %>
+           <div class="row mt-5">
+            <p class="col-3"><%= link_to "編集する", edit_makii_path(@maki),class:" btn-animation-border btn-sm btn-block"%></p>
+            <p class="col-3"> <%= link_to "削除する", makii_path(@maki),method: :delete,class:" btn-animation-border btn-sm btn-block"%></p>
+           </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+      <p class="midashi text-center mt-4">コメント一覧</p>
+    <div id="comments_error">
+      <%= render 'comments/errors', model: @comment %>
+    </div>
+    <div class="row">
+      <p class="col-1"></p>
+    </div>
+     <Hr>
+      <tr>
+        <td>
+          <div class="comments_index">
+            <div id='comment_area'>
+              <%= render "comments/index",new_reply_comment: @comment, maki: @maki %>
             </div>
-    </div>
-    <div class="col-6 mt-4 pl-5 ml-5">
-      <div class="row">
-        <p class="col-4 font">ユーザー名</p>
-        <p class="col-4 fs-5"><%=@maki.user.name %></p>
-      </div>
-      <div class="row">
-        <p class="col-4 font">販売場所</p>
-        <p class="col-8 fs-5"><%=@maki.address %></p>
-      </div>
-      <div class="row">
-        <p class="col-4 font">量</p>
-        <p class="col-4 fs-5"><%= @maki.amount %></p>
-      </div>
-      <div class="row">
-        <p class="col-4 font">価格</p>
-        <p class="col-4 fs-5"><%= @maki.cost %>円</p>
-      </div>
-      <% if @maki.is_active == true %>
-      <div class="row">
-        <p class="col-4 font">販売ステータス</p>
-        <p class="col-4 fs-5 fw-bold" style="color:green">販売中</p>
-      </div>
-      <% elsif @maki.is_active == false %>
-      <div class="row">
-        <p class="col-4 font">販売ステータス</p>
-        <p class="col-4 fs-5" style="color:gray">販売停止中</p>
-      </div>
-      <% end %>
-      <div class="row">
-        <p class="col-4 font">備考<br></p>
-        <p class="col-9 fs-5"><%= @maki.body %></p>
-      </div>
-
-
-        <p class="col-3">
-      <div id="book_mark_buttons_<%= @maki.id %>">
-        <%= render "book_marks/book_mark", maki: @maki %>
-      </div>
-        </p>
-
-
-         <p class="col-3 mt-5">
-        <div id="rate_star_">
-          <%= render "reviews/rate.form", review: @review, maki: @maki %>
-        </div>
-        </p>
-         <% if @maki.user.id == current_user.id %>
-      <div class="row mt-5">
-        <p class="col-3"><%= link_to "編集する", edit_makii_path(@maki),class:" btn-animation-border btn-sm btn-block"%></p>
-        <p class="col-3"> <%= link_to "削除する", makii_path(@maki),method: :delete,class:" btn-animation-border btn-sm btn-block"%></p>
-        </div>
-          <% end %>
-
+              <%= render "comments/form",comment: @comment, maki: @maki %>
+          </div>
+        </td>
+      </tr>
     </div>
   </div>
-</div>
-</div>
-
-<div class='top-bg px-5 px-sm-0'>
-<div class="container">
-    <p class="midashi text-center mt-4">コメント一覧</p>
-
-     <div id="comments_error">
-    <%= render 'comments/errors', model: @comment %>
-  </div>
-
-  <div class="row">
-    <p class="col-1"></p>
-  </div>
-  <Hr>
-
-  <tr>
-    <td>
-      <div class="comments_index">
-        <div id='comment_area'>
-         <%= render "comments/index",new_reply_comment: @comment, maki: @maki %>
-        </div>
-         <%= render "comments/form",comment: @comment, maki: @maki %>
-      </div>
-    </td>
-  </tr>
