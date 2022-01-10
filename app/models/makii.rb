@@ -2,7 +2,6 @@ class Makii < ApplicationRecord
   attachment :image
   belongs_to :user
   has_many :comments
-  has_many :replies, class_name: 'Comment', foreign_key: :reply_comment, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :book_marks, dependent: :destroy
   has_many :reviews, foreign_key: "makii_id"

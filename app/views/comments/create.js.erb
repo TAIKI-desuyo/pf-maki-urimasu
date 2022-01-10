@@ -1,4 +1,2 @@
 $("textarea").val("");
 $("#comment_area").html("<%= j(render 'index', {  new_reply_comment: @new_reply_comment, maki: @maki }) %>")
-
-$("#counts").html("<%= j(render 'count', { maki: @maki }) %>")

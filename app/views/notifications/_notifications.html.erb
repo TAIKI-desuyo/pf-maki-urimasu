@@ -1,46 +1,46 @@
-<% notifications.each do |notification| %>
-  <% visiter = notification.visiter %>
-  <% visited = notification.visited %>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class = "form-inline" >
-        <!--<span>-->
-        <div class="kakomi-tape2">
-          <div class = "small.text-muted.text-right">
-          <%= notification.created_at.strftime('%Y/%m/%d/%H:%M　　') %>
-          <strong>
-            <%= visiter.name %>
-            <%= 'さん' %>
-          </strong>
-          <%= "が" %>
-          <% case notification.action %>
-          <% when 'comment' then %>
-            <% if notification.makii.user_id == visited.id %>
-              <%= link_to "あなたの投稿", notification.makii, style: "font-weight: bold;" %>
-              <%= "にコメントしました" %>
-              <hr>
-              <p class = "text-muted.mb-0">
-                <%= Comment.find_by(id: notification.comment_id)&.comment %>
-              </p>
-            <% else %>
-              <!--<span>-->
-                <%#= link_to makii_path(notification.makii) do %>
-              <!--</span>-->
-                <%# end %>
-              <strong>
-                <%= link_to makii_path(notification.makii) do %>
-                  <%=  'さんの投稿' %>
-                <% end %>
-              </strong>
-              <%= "にコメントしました" %>
-              <p class = "text-muted.mb-0">
-                <%= Comment.find_by(id: notification.comment_id)&.comment %>
-              </p>
+  <% notifications.each do |notification| %>
+    <% visiter = notification.visiter %>
+    <% visited = notification.visited %>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class = "form-inline" >
+          <!--<span>-->
+          <div class="kakomi-tape2">
+            <div class = "small.text-muted.text-right">
+            <%= notification.created_at.strftime('%Y/%m/%d/%H:%M　　') %>
+            <strong>
+              <%= visiter.name %>
+              <%= 'さん' %>
+            </strong>
+            <%= "が" %>
+            <% case notification.action %>
+            <% when 'comment' then %>
+              <% if notification.makii.user_id == visited.id %>
+                <%= link_to "あなたの投稿", notification.makii, style: "font-weight: bold;" %>
+                <%= "にコメントしました" %>
+                <hr>
+                <p class = "text-muted.mb-0">
+                  <%= Comment.find_by(id: notification.comment_id)&.comment %>
+                </p>
+              <% else %>
+                <!--<span>-->
+                  <%#= link_to makii_path(notification.makii) do %>
+                <!--</span>-->
+                  <%# end %>
+                <strong>
+                  <%= link_to makii_path(notification.makii) do %>
+                    <%=  'さんの投稿' %>
+                  <% end %>
+                </strong>
+                <%= "にコメントしました" %>
+                <p class = "text-muted.mb-0">
+                  <%= Comment.find_by(id: notification.comment_id)&.comment %>
+                </p>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
- <% end %>
+   <% end %>

@@ -1,20 +1,18 @@
-<div class="container">
+  <div class="container">
     <p class="midashi text-center">薪販売登録</p>
     <%= form_for(@maki, url: makiis_path) do |f| %>
-  <% if @maki.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <strong>入力内容にエラーがあります</strong>
-      <ul>
-        <% @maki.errors.each do |attr, msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-<% end %>
+      <% if @maki.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <strong>入力内容にエラーがあります</strong>
+          <ul>
+            <% @maki.errors.each do |attr, msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
   <div class="row">
-
-
   </div>
   <div class="row">
     <div class="col offset-2">

@@ -1,25 +1,22 @@
-<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-<div class='top-bg px-5 px-sm-0'>
-<div class="container">
-    <p class="midashi text-center">お知らせ</p>
-  <div class="row">
-    <div class="col-1 ml-auto">
-    <%= link_to notifications_destroy_all_path, method: :delete do %>
-        <i class="fas fa-trash" style="color: black;"></i>
-        <h5 style="color: black;"></h5>
-    <% end %>
-  </div>
+  <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+    <div class="container">
+        <p class="midashi text-center">お知らせ</p>
+      <div class="row">
+        <div class="col-1 ml-auto">
+          <%= link_to notifications_destroy_all_path, method: :delete do %>
+            <i class="fas fa-trash" style="color: black;"></i>
+            <h5 style="color: black;"></h5>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+        <% if @notifications.exists? %>
+          <div class="users-index">
+            <%= render "notifications", notifications: @notifications %>
+          </div>
+        <% else %>
+          <div class="row justify-content-center mt-3">
+            <h5>通知はありません</h5>
+        <% end %>
+        <h4><%= paginate @notifications %></h4>
     </div>
-    <hr>
-<% if @notifications.exists? %>
-    <div class="users-index">
-        <%= render "notifications", notifications: @notifications %>
-    </div>
-<% else %>
-
-
-      <div class="row justify-content-center mt-3">
-      <h5>通知はありません</h5>
-
-<% end %>
- <h4><%= paginate @notifications %></h4>
