@@ -1,12 +1,11 @@
 <div class="average-review-rating d-inline-block" data-score=<%= maki.average_rate %>></div>
 <div class="d-inline-block ml-2">(<%= maki.reviews.count %>)</div>
-
-<script>
-  $('.average-review-rating').empty();
-  $('.average-review-rating').raty({
-    readOnly: true,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>"
-  });
-</script>
+  <script>
+    $('.average-review-rating').empty();
+    $('.average-review-rating').raty({
+      readOnly: true,
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>"
+    });
+  </script>
