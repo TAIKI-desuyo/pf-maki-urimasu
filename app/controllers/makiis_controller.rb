@@ -1,5 +1,5 @@
 class MakiisController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :set_maki, only:[:show, :edit, :update, :destroy, :rate ]
   def new
     @maki = Makii.new
   end
@@ -20,35 +20,34 @@ class MakiisController < ApplicationController
   end
 
   def show
-    @maki = Makii.find(params[:id])
     @comment = Comment.new
     @review = Review.where(user_id:current_user.id,makii_id: @maki.id).first || Review.new(user_id:current_user.id,makii_id: @maki.id)
   end
 
   def edit
-    @maki = Makii.find(params[:id])
   end
 
   def update
-    @maki = Makii.find(params[:id])
 
     @maki.update(maki_params)
     redirect_to makii_path(@maki.id)
   end
 
   def destroy
-    @maki = Makii.find(params[:id])
     @maki.destroy
     redirect_to makiis_path
   end
 
   def rate
-    @maki = Makii.find(params[:id])
     @maki.update(maki_params)
   end
 
 
   private
+
+  def set_maki
+    @maki = Makii.find(params[:id])
+  end
 
   def maki_params
     params.require(:makii).permit(:address, :body, :image, :amount, :cost, :is_active, :rate, :latitude, :latitude)

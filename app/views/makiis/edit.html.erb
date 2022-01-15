@@ -1,48 +1,48 @@
   <div class="container">
     <p class="midashi text-center">薪販売編集</p>
-  <div class="row">
-  </div>
-  <div class="row">
-    <div class="col offset-2">
-      <%= form_with model: @maki, url:makii_path, local:true do |f| %>
-        <table class="table table-borderless">
-          <tbody>
-            <tr class="mb-3">
-              <td class="text-center"><%= f.label :address, "どこで売りますか？" %></td>
-              <td><%= f.text_field :address, size: 30, placeholder: "住所を入力してください" %></td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center"><%= f.label :amount, "量（単位も書いてください）" %></td>
-              <td><%= f.text_field :amount,　pleceholder: "20本" %></td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center"><%= f.label :cost, "価格" %></td>
-              <td><%= f.text_field :cost, placeholder: "400" %>円</td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center">販売ステータス</td>
-              <td>
-                <%= f.radio_button :is_active, :true %>
-                <%= f.label :is_active_sale, "販売中" %>
-                <%= f.radio_button :is_active, :false %>
-                <%= f.label :is_active_not_sale, "販売停止中" %>
-              </td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center"><%= f.label :body, "備考" %></td>
-              <td><%= f.text_area :body, placeholder: "備考欄" %></td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center "><%= f.label :image, "商品画像" %></td>
-              <td><%= f.attachment_field :image %></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><%= f.submit '変更を保存する', class: "btn btn-outline-dark mb-3 offset-1" %></td>
-            </tr>
-          </tbody>
-        </table>
-      <% end %>
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col offset-2">
+        <%= form_with model: @maki, url:makii_path, local:true do |f| %>
+          <table class="table table-borderless">
+            <tbody>
+              <tr class="mb-3">
+                <td class="text-center"><%= f.label :address, "どこで売りますか？" %></td>
+                <td><%= f.text_field :address, size: 30, placeholder: "住所を入力してください" %></td>
+              </tr>
+              <tr class="mb-3">
+                <td class="text-center"><%= f.label :amount, "量（単位も書いてください）" %></td>
+                <td><%= f.text_field :amount,　pleceholder: "20本" %></td>
+              </tr>
+              <tr class="mb-3">
+                <td class="text-center"><%= f.label :cost, "価格" %></td>
+                <td><%= f.text_field :cost, placeholder: "400" %>円</td>
+              </tr>
+              <tr class="mb-3">
+                <td class="text-center">販売ステータス</td>
+                <td>
+                  <%= f.radio_button :is_active, :true %>
+                  <%= f.label :is_active_sale, "販売中" %>
+                  <%= f.radio_button :is_active, :false %>
+                  <%= f.label :is_active_not_sale, "販売停止中" %>
+                </td>
+              </tr>
+              <tr class="mb-3">
+                <td class="text-center"><%= f.label :body, "備考" %></td>
+                <td><%= f.text_area :body, placeholder: "備考欄" %></td>
+              </tr>
+              <tr class="mb-3">
+                <td class="text-center "><%= f.label :image, "商品画像" %></td>
+                <td><%= f.attachment_field :image %></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><%= f.submit '変更を保存する', class: "btn btn-outline-dark mb-3 offset-1" %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>

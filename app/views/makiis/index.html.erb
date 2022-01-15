@@ -1,37 +1,36 @@
-<div class="container makii-index">
-              <p class="text-center midashi">販売場所一覧</p>
+  <div class="container makii-index">
+    <p class="text-center midashi">販売場所一覧</p>
     <div class="row justify-content-center mt-4">
       <div class="col-10 row justify-content-between text-center">
       </div>
     </div>
-        <div class="row justify-content-center mt-3">
-          <div class="col-10">
-            <table class="table table-hover">
-              <thead class="bg-brown">
-                    <tr>
-                      <th>住所</th>
-                      <th>量</th>
-                      <th>価格</th>
-                      <th>ステータス</th>
-                      <th></th>
-                    </tr>
-              </thead>
-                <tbody>
-                      <% @makis.each do |maki| %>
-                         <tr>
-                      <td><%= link_to maki.address,makii_path(maki.id) %></td>
-                      <td><%= maki.amount %></td>
-                      <td><%= maki.cost %>円</td>
-                        <% if maki.is_active == true %>
-                      <td style="color:blue;">販売中</td>
-                        <% elsif maki.is_active == false %>
-                      <td style="color:gray;">販売停止中</td>
-                        <% end %>
-                        <td><%= render "reviews/rate.average", maki: maki %></td>
-
-                    </tr>
-                  <% end %>
-                </tbody>
+    <div class="row justify-content-center mt-3">
+      <div class="col-10">
+        <table class="table table-hover">
+          <thead class="bg-brown">
+            <tr>
+              <th>住所</th>
+              <th>量</th>
+              <th>価格</th>
+              <th>ステータス</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @makis.each do |maki| %>
+              <tr>
+                  <td><%= link_to maki.address,makii_path(maki.id) %></td>
+                  <td><%= maki.amount %></td>
+                  <td><%= maki.cost %>円</td>
+                <% if maki.is_active == true %>
+                  <td style="color:blue;">販売中</td>
+                <% elsif maki.is_active == false %>
+                  <td style="color:gray;">販売停止中</td>
+                <% end %>
+                  <td><%= render "reviews/rate.average", maki: maki %></td>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
       </div>
     </div>

@@ -1,35 +1,28 @@
-
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-
       <a class="navbar-brand" href="/"><%= image_tag 'maki.logo.png', size: '130x80' %></a>
-
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
         <% if user_signed_in? %>
-        <ul class=" h-font navbar-nav mr-auto">
-          <li><%= link_to ' お気に入り　' ,book_marks_index_path %></li>
-          <li><%= link_to ' 販売場所一覧　' ,makiis_path %></li>
-          <li><%= link_to ' 薪を売りたい　',new_makii_path %></li>
-        </ul>
-        <ul class=" h-font navbar-nav ml-auto">
-          <li class= "user-name"><%= current_user.name %>さん</li>
-          <li><%=render "partial/circle" %></li>
-          <li><%= link_to ' 問い合わせ　' ,new_contact_path, style:"color:orange;" %></li>
-          <li><%= link_to ' ログアウト　' , destroy_user_session_path, method: :delete, style:"color:orange;" %></li>
-        </ul>
+          <ul class=" h-font navbar-nav mr-auto">
+            <li><%= link_to ' お気に入り　' ,book_marks_index_path %></li>
+            <li><%= link_to ' 販売場所一覧　' ,makiis_path %></li>
+            <li><%= link_to ' 薪を売りたい　',new_makii_path %></li>
+          </ul>
+          <ul class=" h-font navbar-nav ml-auto">
+            <li class= "user-name"><%= current_user.name %>さん</li>
+            <li><%=render "partial/circle" %></li>
+            <li><%= link_to ' 問い合わせ　' ,new_contact_path, style:"color:orange;" %></li>
+            <li><%= link_to ' ログアウト　' , destroy_user_session_path, method: :delete, style:"color:orange;" %></li>
+          </ul>
         <% else %>
-        <ul class=" h-font navbar-nav ml-auto">
-          <li><%= link_to ' 新規登録　' ,new_user_registration_path %></li>
-          <li><%= link_to ' ログイン　' , new_user_session_path %></li>
-        </ul>
+          <ul class=" h-font navbar-nav ml-auto">
+            <li><%= link_to ' 新規登録　' ,new_user_registration_path %></li>
+            <li><%= link_to ' ログイン　' , new_user_session_path %></li>
+          </ul>
         <% end %>
-
-
       </div>
-
     </div>
   </nav>

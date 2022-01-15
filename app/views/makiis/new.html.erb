@@ -1,60 +1,60 @@
   <div class="container">
-    <p class="midashi text-center">薪販売登録</p>
-    <%= form_for(@maki, url: makiis_path) do |f| %>
-      <% if @maki.errors.any? %>
-        <div class="alert alert-danger" role="alert">
-          <strong>入力内容にエラーがあります</strong>
-          <ul>
-            <% @maki.errors.each do |attr, msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
+      <p class="midashi text-center">薪販売登録</p>
+      <%= form_for(@maki, url: makiis_path) do |f| %>
+        <% if @maki.errors.any? %>
+          <div class="alert alert-danger" role="alert">
+            <strong>入力内容にエラーがあります</strong>
+            <ul>
+              <% @maki.errors.each do |attr, msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  <div class="row">
-  </div>
-  <div class="row">
-    <div class="col offset-2">
-      <%= form_with model: @maki, local:true do |f| %>
-        <table class="table table-borderless">
-          <tbody>
-            <tr class="mb-3">
-              <td class="text-center font"><%= f.label :address, "どこで売りますか？" %></td>
-              <td><%= f.text_field :address, size: 30, placeholder: "住所を入力してください" %></td>
-            </tr>
-             <tr class="mb-3">
-              <td class="text-center font"><%= f.label :amount, "量(単位も書いてください)" %></td>
-              <td><%= f.text_field :amount, placeholder: "500g" %></td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center font"><%= f.label :cost, "価格" %></td>
-              <td><%= f.text_field :cost, placeholder: "400" %>円</td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center font">販売ステータス</td>
-              <td>
-                <%= f.radio_button :is_active, true %>
-                <%= f.label :is_active_sale, "販売中" %>
-                <%= f.radio_button :is_active, false %>
-                <%= f.label :is_active_not_sale, "販売停止中" %>
-              </td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center font"><%= f.label :body, "備考" %></td>
-              <td><%= f.text_area :body, placeholder: "備考欄" %></td>
-            </tr>
-            <tr class="mb-3">
-              <td class="text-center font"><%= f.label :image, "薪画像(無くても可)" %></td>
-              <td><%= f.attachment_field :image %></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><%= f.submit '新規登録', class: "w-25 btn-animation-border btn-sm btn-block" %></td>
-            </tr>
-          </tbody>
-        </table>
-      <% end %>
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col offset-2">
+        <%= form_with model: @maki, local:true do |f| %>
+          <table class="table table-borderless">
+            <tbody>
+              <tr class="mb-3">
+                <td class="text-center font"><%= f.label :address, "どこで売りますか？" %></td>
+                <td><%= f.text_field :address, size: 30, placeholder: "住所を入力してください" %></td>
+              </tr>
+               <tr class="mb-3">
+                <td class="text-center font"><%= f.label :amount, "量(単位も書いてください)" %></td>
+                <td><%= f.text_field :amount, placeholder: "500g" %></td>
+              </tr>
+              <tr class="mb-3">
+                <td class="text-center font"><%= f.label :cost, "価格" %></td>
+                <td><%= f.text_field :cost, placeholder: "400" %>円</td>
+              </tr>
+              <tr class="mb-3">
+                <td class="text-center font">販売ステータス</td>
+                <td>
+                  <%= f.radio_button :is_active, true %>
+                  <%= f.label :is_active_sale, "販売中" %>
+                  <%= f.radio_button :is_active, false %>
+                  <%= f.label :is_active_not_sale, "販売停止中" %>
+                </td>
+              </tr>
+              <tr class="mb-3">
+                <td class="text-center font"><%= f.label :body, "備考" %></td>
+                <td><%= f.text_area :body, placeholder: "備考欄" %></td>
+              </tr>
+              <tr class="mb-3">
+                <td class="text-center font"><%= f.label :image, "薪画像(無くても可)" %></td>
+                <td><%= f.attachment_field :image %></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><%= f.submit '新規登録', class: "w-25 btn-animation-border btn-sm btn-block" %></td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
