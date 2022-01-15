@@ -3,32 +3,33 @@
     <div class="row">
       <p class="col-1"></p>
     </div>
-      <%= form_for(@contact, url: confirm_path) do |f| %>
-        <% if @contact.errors.any? %>
-          <div class="alert alert-danger" role="alert">
-            <strong>入力内容にエラーがあります</strong>
-            <ul>
-              <% @contact.errors.each do |attr, msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <table class="table">
-          <tr>
-            <th class="font">名前<span class="text-danger">（必須）</span></th>
-            <td><%= f.text_field :name %></td>
-          </tr>
-          <tr>
-            <th class="font">メールアドレス<span class="text-danger">（必須）</span></th>
-            <td><%= f.text_field :email %></td>
-          </tr>
-          <tr>
-            <th class="font">お問い合わせ内容</th>
-            <td><%= f.text_area :message %></td>
-          </tr>
-        </table>
-         <div class="row justify-content-center mt-5 mb-5 ml-5">
-          <%= f.submit '送信', :class => ' w-25 btn-animation-border btn-sm btn-block' %>
+    <%= form_for(@contact, url: confirm_path) do |f| %>
+      <% if @contact.errors.any? %>
+         <div class="alert alert-danger" role="alert">
+          <strong>入力内容にエラーがあります</strong>
+          <ul>
+             <% @contact.errors.each do |attr, msg| %>
+              <li><%= msg %></li>
+             <% end %>
+           </ul>
          </div>
       <% end %>
+      <table class="table">
+        <tr>
+           <th class="font">名前<span class="text-danger">（必須）</span></th>
+           <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th class="font">メールアドレス<span class="text-danger">（必須）</span></th>
+          <td><%= f.text_field :email %></td>
+        </tr>
+        <tr>
+          <th class="font">お問い合わせ内容</th>
+          <td><%= f.text_area :message %></td>
+        </tr>
+      </table>
+        <div class="row justify-content-center mt-5 mb-5 ml-5">
+         <%= f.submit '送信', :class => ' w-25 btn-animation-border btn-sm btn-block' %>
+        </div>
+    <% end %>
+  </div>
